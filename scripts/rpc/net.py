@@ -1,4 +1,4 @@
-from client import print_dict, print_array, int_arg
+from .client import print_dict, print_array, int_arg
 
 
 def add_ip_address(args):

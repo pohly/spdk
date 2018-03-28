@@ -1,4 +1,4 @@
-from client import print_dict, print_array, int_arg
+from .client import print_dict, print_array, int_arg
 
 
 def set_vhost_controller_coalescing(args):

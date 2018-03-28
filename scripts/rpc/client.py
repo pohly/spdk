@@ -9,11 +9,11 @@ except ImportError:
 
 
 def print_dict(d):
-    print json.dumps(d, indent=2)
+    print(json.dumps(d, indent=2))
 
 
 def print_array(a):
-    print " ".join((quote(v) for v in a))
+    print(" ".join((quote(v) for v in a)))
 
 
 def int_arg(arg):
@@ -54,7 +54,7 @@ class JSONRPCClient(object):
             print("request:")
             print(json.dumps(req, indent=2))
 
-        self.sock.sendall(reqstr)
+        self.sock.sendall(reqstr.encode('utf-8'))
         buf = ''
         closed = False
         response = {}
@@ -71,7 +71,7 @@ class JSONRPCClient(object):
                 if (newdata == b''):
                     closed = True
 
-                buf += newdata
+                buf += newdata.decode('utf-8')
                 response = json.loads(buf)
             except socket.timeout:
                 break
@@ -83,17 +83,17 @@ class JSONRPCClient(object):
             if method == "kill_instance":
                 exit(0)
             if closed:
-                print "Connection closed with partial response:"
+                print("Connection closed with partial response:")
             else:
-                print "Timeout while waiting for response:"
-            print buf
+                print("Timeout while waiting for response:")
+            print(buf)
             exit(1)
 
         if 'error' in response:
-            print "Got JSON-RPC error response"
-            print "request:"
+            print("Got JSON-RPC error response")
+            print("request:")
             print_dict(json.loads(reqstr))
-            print "response:"
+            print("response:")
             print_dict(response['error'])
             exit(1)
 

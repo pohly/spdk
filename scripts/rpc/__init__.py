@@ -1,15 +1,15 @@
-import app
-import bdev
-from client import print_dict
-import iscsi
-import log
-import lvol
-import nbd
-import net
-import nvmf
-import pmem
-import subsystem
-import vhost
+from . import app
+from . import bdev
+from .client import print_dict
+from . import iscsi
+from . import log
+from . import lvol
+from . import nbd
+from . import net
+from . import nvmf
+from . import pmem
+from . import subsystem
+from . import vhost
 import json
 import sys
 
